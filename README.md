@@ -1,6 +1,14 @@
 # wordle-solver
 
-Pairs well with the popular word game [wordle](https://www.powerlanguage.co.uk/wordle/)
+A bare-bones, vanilla JavaScript app which solves [wordle](https://www.powerlanguage.co.uk/wordle/) riddles.
+
+[Try it out](https://ikenley.github.io/wordle-solver/)
+
+Potential updates:
+
+- Improve filtering algorithm
+- Sort words by popularity
+- Optimize search performance
 
 ---
 
