@@ -4,6 +4,7 @@
   "description": "Solve wordle puzzles",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/ikenley/wordle-solver/issues"
   },
-  "homepage": "https://github.com/ikenley/wordle-solver#readme"
+  "homepage": "https://github.com/ikenley/wordle-solver#readme",
+  "type": "module"
 }
