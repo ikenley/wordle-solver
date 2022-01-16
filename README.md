@@ -9,6 +9,7 @@ Potential updates:
 - Improve filtering algorithm
 - Sort words by popularity
 - Optimize search performance
+- UI Framework: [create-react-app](https://create-react-app.dev/docs/adding-typescript/) + [react-bootstrap](https://react-bootstrap.github.io/)
 
 ---
 
