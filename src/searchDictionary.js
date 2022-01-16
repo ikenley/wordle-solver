@@ -1,20 +1,21 @@
-import dictionary from "./data/dictionary.js";
+import dictionary from "../data/dictionary.js";
 
-const SEARCH_PATTERN = "***A*";
-const INCLUDE_CHARACTERS = "AR";
-const EXCLUDE_CHARACTERS = "CEP";
-
-const main = () => {
-  const wordsContaining = containsAllCharacters(dictionary, INCLUDE_CHARACTERS);
+const searchDictionary = (
+  searchPattern,
+  includeCharacters,
+  excludeCharactes
+) => {
+  const wordsContaining = containsAllCharacters(dictionary, includeCharacters);
   const wordsExcluding = notContainsAnyCharacters(
     wordsContaining,
-    EXCLUDE_CHARACTERS
+    excludeCharactes
   );
   const positionMatchingWords = filterByPositionPattern(
     wordsExcluding,
-    SEARCH_PATTERN
+    searchPattern
   );
-  positionMatchingWords.forEach((word) => console.log(word));
+
+  return positionMatchingWords;
 };
 
 /*
@@ -83,4 +84,4 @@ const notContainsAnyCharacters = (words, exclusionCharacters) => {
   return filteredWords;
 };
 
-main();
+export default searchDictionary;

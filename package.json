@@ -4,8 +4,10 @@
   "description": "Solve wordle puzzles",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js",
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
@@ -17,5 +19,9 @@
     "url": "https://github.com/ikenley/wordle-solver/issues"
   },
   "homepage": "https://github.com/ikenley/wordle-solver#readme",
-  "type": "module"
+  "devDependencies": {
+    "http-server": "^14.1.0",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1"
+  }
 }
