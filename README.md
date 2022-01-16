@@ -14,3 +14,9 @@ Potential updates:
 ---
 
 Dictionary courtesy of https://scrabutility.com/TWL06.txt
+
+---
+
+## Links
+
+- [Archive](https://www.devangthakkar.com/wordle_archive/)

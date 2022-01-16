@@ -1,15 +1,28 @@
 <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wordle-Solver</title>
+    <link 
+      rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+      crossorigin="anonymous">
+  </head>
+
   <body>
-    <div>
-        <h1>Worldle Solver</h1>
-        <a href="https://github.com/ikenley/wordle-solver">Source</a>
+    <div class="container">
+      <div class="mb-3">
+          <h1 class="m-0">Worldle Solver</h1>
+          <a href="https://github.com/ikenley/wordle-solver">Source</a>
+      </div>
+      
+      <div class="py-1">Search pattern: <input id="search-pattern" value="*****"></input></div>
+      <div class="py-1">Include characters: <input id="include-characters" value=""></input></div>
+      <div class="py-1">Exclude characters: <input id="exclude-characters" value=""></input></div>
+      <div><button id="run-search">Get Words</button></div>
+      <ul id="result-list"></ul>
     </div>
-    
-    <div>Search pattern: <input id="search-pattern" value="*****"></input></div>
-    <div>Include characters: <input id="include-characters" value=""></input></div>
-    <div>Exclude characters: <input id="exclude-characters" value=""></input></div>
-    <div><button id="run-search">Get Words</button></div>
-    <ul id="result-list"></ul>
 
     <script src="dist/index.js"></script>
   </body>
