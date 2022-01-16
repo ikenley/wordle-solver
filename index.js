@@ -1,8 +1,8 @@
 import dictionary from "./data/dictionary.js";
 
-const SEARCH_PATTERN = "R*T**";
-const INCLUDE_CHARACTERS = "AER";
-const EXCLUDE_CHARACTERS = "W";
+const SEARCH_PATTERN = "***A*";
+const INCLUDE_CHARACTERS = "AR";
+const EXCLUDE_CHARACTERS = "CEP";
 
 const main = () => {
   const wordsContaining = containsAllCharacters(dictionary, INCLUDE_CHARACTERS);
