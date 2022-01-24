@@ -34,7 +34,7 @@ const renderResults = (words) => {
   resultList.innerHTML = "";
   words.forEach((word) => {
     const li = document.createElement("li");
-    li.innerText = word;
+    li.innerText = `${word.value} (${word.frequency})`;
     resultList.appendChild(li);
   });
 };

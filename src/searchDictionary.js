@@ -1,4 +1,5 @@
 import dictionary from "../data/dictionary.js";
+import { orderBy } from "lodash";
 
 const searchDictionary = (
   searchPattern,
@@ -15,7 +16,9 @@ const searchDictionary = (
     searchPattern
   );
 
-  return positionMatchingWords;
+  const sortedWords = orderBy(positionMatchingWords, "frequency", "desc");
+
+  return sortedWords;
 };
 
 /*
@@ -30,7 +33,7 @@ const filterByPositionPattern = (words, searchPattern) => {
       const char = searchPattern.charAt(i);
       // Ignore wildcards
       if (isLetter(char)) {
-        if (word.charAt(i) !== char) {
+        if (word.value.charAt(i) !== char) {
           missingACharacter = true;
           break;
         }
@@ -54,7 +57,7 @@ const containsAllCharacters = (words, inclusionCharacters) => {
   const filteredWords = words.filter((word) => {
     let missingACharacter = false;
     characters.forEach((char) => {
-      if (!word.includes(char)) {
+      if (!word.value.includes(char)) {
         missingACharacter = true;
         return;
       }
@@ -72,7 +75,7 @@ const notContainsAnyCharacters = (words, exclusionCharacters) => {
   const filteredWords = words.filter((word) => {
     let containsCharacter = false;
     characters.forEach((char) => {
-      if (word.includes(char)) {
+      if (word.value.includes(char)) {
         containsCharacter = true;
         return;
       }
