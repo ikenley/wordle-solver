@@ -14,12 +14,13 @@ const handleSearchClick = (event) => {
   const excludeCharactes = sanitizeInput(
     document.getElementById("exclude-characters").value
   );
-  console.log(`searchPattern=${searchPattern}`);
+  const showCommonOnly = document.getElementById("show-common-only").checked;
 
   const resultWords = searchDictionary(
     searchPattern,
     includeCharacters,
-    excludeCharactes
+    excludeCharactes,
+    showCommonOnly
   );
 
   renderResults(resultWords);

@@ -1,5 +1,8 @@
 import fs from "fs";
 import dictionaryArray from "./dictionary-array.js";
+import commonWords from "./common-words.js";
+
+// Assign frequency and isCommon to words
 
 const frequencyMap = {
   A: 0.082,
@@ -43,17 +46,35 @@ const calculateFrequency = (word) => {
   return rounded;
 };
 
-const assignFrequency = () => {
-  const dictionary = dictionaryArray.map((word) => {
+const assignFrequency = (words) => {
+  const dictionary = words.map((word) => {
     return {
       value: word,
       frequency: calculateFrequency(word),
     };
   });
 
-  const json = JSON.stringify(dictionary);
-  const fileContent = `export default ${json}`;
-  fs.writeFileSync("./data/dictionary.js", fileContent);
+  return dictionary;
 };
 
-assignFrequency();
+const assignIsCommmon = (words) => {
+  const wordsWithIsCommon = words.map((word) => {
+    return {
+      ...word,
+      isCommon: commonWords.includes(word.value.toLowerCase()),
+    };
+  });
+
+  return wordsWithIsCommon;
+};
+
+const main = () => {
+  const wordsWithFrequency = assignFrequency(dictionaryArray);
+  const wordsWithIsCommon = assignIsCommmon(wordsWithFrequency);
+
+  const json = JSON.stringify(wordsWithIsCommon);
+  const fileContent = `export default ${json}`;
+  fs.writeFileSync("./dictionary.js", fileContent);
+};
+
+main();

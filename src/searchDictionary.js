@@ -4,9 +4,17 @@ import { orderBy } from "lodash";
 const searchDictionary = (
   searchPattern,
   includeCharacters,
-  excludeCharactes
+  excludeCharactes,
+  showCommonOnly
 ) => {
-  const wordsContaining = containsAllCharacters(dictionary, includeCharacters);
+  const wordsWithCommonOnlyFilter = filterByShowCommonOnly(
+    dictionary,
+    showCommonOnly
+  );
+  const wordsContaining = containsAllCharacters(
+    wordsWithCommonOnlyFilter,
+    includeCharacters
+  );
   const wordsExcluding = notContainsAnyCharacters(
     wordsContaining,
     excludeCharactes
@@ -19,6 +27,14 @@ const searchDictionary = (
   const sortedWords = orderBy(positionMatchingWords, "frequency", "desc");
 
   return sortedWords;
+};
+
+const filterByShowCommonOnly = (words, showCommonOnly) => {
+  const filteredWords = words.filter((word) => {
+    return word.isCommon || !showCommonOnly;
+  });
+
+  return filteredWords;
 };
 
 /*
