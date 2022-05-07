@@ -5,6 +5,7 @@ const searchDictionary = (
   searchPattern,
   includeCharacters,
   excludeCharactes,
+  excludeIndexCharactersArray,
   showCommonOnly
 ) => {
   const wordsWithCommonOnlyFilter = filterByShowCommonOnly(
@@ -19,8 +20,18 @@ const searchDictionary = (
     wordsContaining,
     excludeCharactes
   );
+
+  let wordsIndexExcluding = wordsExcluding;
+  for (let ix = 0; ix < excludeIndexCharactersArray.length; ix++) {
+    wordsIndexExcluding = notContainCharactersAtIndex(
+      wordsIndexExcluding,
+      ix,
+      excludeIndexCharactersArray[ix]
+    );
+  }
+
   const positionMatchingWords = filterByPositionPattern(
-    wordsExcluding,
+    wordsIndexExcluding,
     searchPattern
   );
 
@@ -92,6 +103,24 @@ const notContainsAnyCharacters = (words, exclusionCharacters) => {
     let containsCharacter = false;
     characters.forEach((char) => {
       if (word.value.includes(char)) {
+        containsCharacter = true;
+        return;
+      }
+    });
+    // If no misses, return true
+    return !containsCharacter;
+  });
+
+  return filteredWords;
+};
+
+const notContainCharactersAtIndex = (words, ix, exclusionCharacters) => {
+  const characters = [...exclusionCharacters];
+
+  const filteredWords = words.filter((word) => {
+    let containsCharacter = false;
+    characters.forEach((char) => {
+      if (word.value.charAt(ix).toString() === char) {
         containsCharacter = true;
         return;
       }

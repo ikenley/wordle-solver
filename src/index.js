@@ -8,18 +8,32 @@ const handleSearchClick = (event) => {
   const searchPattern = sanitizeInput(
     document.getElementById("search-pattern").value
   );
-  const includeCharacters = sanitizeInput(
+  let includeCharacters = sanitizeInput(
     document.getElementById("include-characters").value
   );
   const excludeCharactes = sanitizeInput(
     document.getElementById("exclude-characters").value
   );
+
+  const excludeIndexCharactersArray = [];
+  for (let i = 0; i < 5; i++) {
+    excludeIndexCharactersArray[i] = sanitizeInput(
+      document.getElementById(`exclude-index-characters-${i}`).value
+    );
+
+    // Implicitly add "yellow" characters to includes list
+    includeCharacters = includeCharacters.concat(
+      excludeIndexCharactersArray[i]
+    );
+  }
+
   const showCommonOnly = document.getElementById("show-common-only").checked;
 
   const resultWords = searchDictionary(
     searchPattern,
     includeCharacters,
     excludeCharactes,
+    excludeIndexCharactersArray,
     showCommonOnly
   );
 
