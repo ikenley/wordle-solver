@@ -35,7 +35,11 @@ const searchDictionary = (
     searchPattern
   );
 
-  const sortedWords = orderBy(positionMatchingWords, "frequency", "desc");
+  const sortedWords = orderBy(
+    positionMatchingWords,
+    ["uniqueChars", "frequency"],
+    ["desc", "desc"]
+  );
 
   return sortedWords;
 };

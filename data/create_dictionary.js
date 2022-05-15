@@ -1,6 +1,7 @@
 import fs from "fs";
 import dictionaryArray from "./dictionary-array.js";
 import commonWords from "./common-words.js";
+import uniq from "lodash/uniq.js";
 
 // Assign frequency and isCommon to words
 
@@ -68,11 +69,23 @@ const assignIsCommmon = (words) => {
   return wordsWithIsCommon;
 };
 
+const assignUniqueChars = (words) => {
+  const wordsWithUniqueChars = words.map((word) => {
+    return {
+      ...word,
+      uniqueChars: uniq(word.value).length,
+    };
+  });
+
+  return wordsWithUniqueChars;
+};
+
 const main = () => {
   const wordsWithFrequency = assignFrequency(dictionaryArray);
   const wordsWithIsCommon = assignIsCommmon(wordsWithFrequency);
+  const wordsWithUniqueChars = assignUniqueChars(wordsWithIsCommon);
 
-  const json = JSON.stringify(wordsWithIsCommon);
+  const json = JSON.stringify(wordsWithUniqueChars);
   const fileContent = `export default ${json}`;
   fs.writeFileSync("./dictionary.js", fileContent);
 };
